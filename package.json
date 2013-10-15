@@ -1,5 +1,5 @@
 {
-  "name": "is",
+  "name": "is-simple",
   "version": "0.0.1",
   "author": "Matthew Oates",
   "description": "Simple type checking for JavaScript in the browser and node.js",
