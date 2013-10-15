@@ -1,0 +1,35 @@
+{
+  "name": "is",
+  "version": "0.0.1",
+  "author": "Matthew Oates",
+  "description": "Simple type checking for JavaScript in the browser and node.js",
+  "scripts": {
+    "test": "vows --spec --isolate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matthewoates/is.git"
+  },
+  "keywords": [
+    "is",
+    "type safe"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "~2.0.0"
+  },
+  "testling": {
+    "files": "test/*.js",
+    "browsers": {
+      "ie": [ 8, 9 ],
+      "firefox": [ 13 ],
+      "chrome": [ 20 ],
+      "safari": [ 5.1 ],
+      "opera": [ 12 ]
+    }
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.6"
+  }
+}
