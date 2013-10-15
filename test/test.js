@@ -9,14 +9,26 @@ function runTests(data) {
         fn = data.fn;
 
     test(testName, function (t) {
-        var i;
+        var i, success;
 
         for (i = 0; i < passingInputs.length; i++) {
-            t.assert(fn(passingInputs[i]));
+            success = fn(passingInputs[i]);
+
+            if (!success) {
+                throw (new Error()).stack;
+            }
+
+            t.assert(success);
         }
 
         for (i = 0; i < failingInputs.length; i++) {
-            t.assert(!fn(failingInputs[i]));
+            success = !fn(failingInputs[i]);
+
+            if (!success) {
+                throw (new Error()).stack;
+            }
+
+            t.assert(success);
         }
 
         t.end();
