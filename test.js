@@ -1,5 +1,5 @@
 var test = require('tape'),
-    is = require('../src/is'),
+    is = require('./is'),
     helper = {};
 
 function runTests(data) {
