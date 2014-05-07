@@ -9,17 +9,21 @@ function runTests(data) {
         i;
 
     describe(testName, function () {
-        it('testing passing cases', function () {
-            for (i = 0; i < passingInputs.length; i++) {
-                assert.equal(fn(passingInputs[i]), true);
-            }
-        });
+        if (passingInputs.length > 0) {
+            it('testing passing cases', function () {
+                for (i = 0; i < passingInputs.length; i++) {
+                    assert.equal(fn(passingInputs[i]), true);
+                }
+            });
+        }
 
-        it('testing failing cases', function () {
-            for (i = 0; i < passingInputs.length; i++) {
-                assert.equal(fn(failingInputs[i]), false);
-            }
-        });
+        if (failingInputs.length > 0) {
+            it('testing failing cases', function () {
+                for (i = 0; i < passingInputs.length; i++) {
+                    assert.equal(fn(failingInputs[i]), false);
+                }
+            });
+        }
     });
 }
 
@@ -28,6 +32,15 @@ runTests({
     fn            : is.array,
     passingInputs : [[], [1, 2, 3], ['a', 'b', 'c']],
     failingInputs : [null, undefined, 0, true, false, '', function () {}, {}]
+});
+
+// if all of the other tests pass, it is sufficient to test is.arrayOf
+// with only one function that does not always return true or false
+runTests({
+    testName      : 'is.arrayOf',
+    fn            : is.arrayOf(is.number),
+    passingInputs : [[1, 2, 3], [0], []],
+    failingInputs : [[{}], [1, 2, {}], [1, {}, 3], [{}, 2, 3], {}, null, undefined, Infinity, 0]
 });
 
 runTests({
@@ -98,5 +111,21 @@ runTests({
     fn            : is.undefined,
     passingInputs : [undefined],
     failingInputs : [NaN, Infinity, -Infinity, [], [1, 2, 3], null, true, false, '', function () {}, {}]
+});
+
+runTests({
+    testName      : 'is.any',
+    fn            : is.any,
+    passingInputs : [1, Infinity, NaN, false, '', function () {}, {}, []],
+    failingInputs : []
+});
+
+function Foo() {}
+
+runTests({
+    testName      : 'is.instanceOf',
+    fn            : is.instanceOf(Foo),
+    passingInputs : [new Foo()],
+    failingInputs : [{}, [], null, undefined, NaN, Infinity]
 });
 
