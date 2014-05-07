@@ -14,6 +14,9 @@
   ],
   "dependencies": {},
   "devDependencies": {},
+  "scripts": {
+    "test": "mocha -R list -r is"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=0.6"

@@ -1,37 +1,25 @@
-var test = require('tape'),
-    is = require('./is'),
-    helper = {};
+var assert = require('assert'),
+    is = require('./is');
 
 function runTests(data) {
     var testName = data.testName,
         passingInputs = data.passingInputs,
         failingInputs = data.failingInputs,
-        fn = data.fn;
+        fn = data.fn,
+        i;
 
-    test(testName, function (t) {
-        var i, success;
-
-        for (i = 0; i < passingInputs.length; i++) {
-            success = fn(passingInputs[i]);
-
-            if (!success) {
-                throw (new Error()).stack;
+    describe(testName, function () {
+        it('testing passing cases', function () {
+            for (i = 0; i < passingInputs.length; i++) {
+                assert.equal(fn(passingInputs[i]), true);
             }
+        });
 
-            t.assert(success);
-        }
-
-        for (i = 0; i < failingInputs.length; i++) {
-            success = !fn(failingInputs[i]);
-
-            if (!success) {
-                throw (new Error()).stack;
+        it('testing failing cases', function () {
+            for (i = 0; i < passingInputs.length; i++) {
+                assert.equal(fn(failingInputs[i]), false);
             }
-
-            t.assert(success);
-        }
-
-        t.end();
+        });
     });
 }
 
@@ -43,8 +31,8 @@ runTests({
 });
 
 runTests({
-    testName      : 'is.boolean',
-    fn            : is.boolean,
+    testName      : 'is.bool',
+    fn            : is.bool,
     passingInputs : [true, false],
     failingInputs : [null, undefined, [], 0, '', function () {}, {}]
 });
@@ -57,8 +45,8 @@ runTests({
 });
 
 runTests({
-    testName      : 'is.function',
-    fn            : is.function,
+    testName      : 'is.fn',
+    fn            : is.fn,
     passingInputs : [function () {}],
     failingInputs : [null, undefined, [], 0, true, false, '', {}]
 });
@@ -111,3 +99,4 @@ runTests({
     passingInputs : [undefined],
     failingInputs : [NaN, Infinity, -Infinity, [], [1, 2, 3], null, true, false, '', function () {}, {}]
 });
+
