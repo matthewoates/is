@@ -3,7 +3,19 @@
         return Object.prototype.toString.call(a) === '[object Array]';
     };
 
-    is.boolean = function (b) {
+    is.arrayOf = function (t) {
+        return function (a) {
+            var ok = is.array(a);
+
+            for (var i = 0; i < a.length && ok; i++) {
+                ok = t(a[i]);
+            }
+
+            return !!ok;
+        };
+    };
+
+    is.bool = function (b) {
         return !!b === b;
     };
 
@@ -15,7 +27,7 @@
             !is.nan(x);
     }
 
-    is.function = function (f) {
+    is.fn = function (f) {
         return Object.prototype.toString.call(f) === '[object Function]';
     };
 
@@ -49,4 +61,19 @@
     is.undefined = function (o) {
         return (typeof o === 'undefined');
     };
-}(typeof exports === 'undefined' ? this.tj = {} : exports));
+
+    is.any = function (o) {
+        return true;
+    };
+
+    is.instanceOf = function (constructor) {
+        return function (o) {
+            return is.fn(constructor) && (o instanceof constructor);
+        };
+    };
+
+// this cryptic expression is fairly common with npm modules
+// it exports the library via exports for node.js,
+// and attaches to window in the browser
+}(typeof exports === 'undefined' ? this.is = {} : exports, this));
+
