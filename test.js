@@ -43,7 +43,7 @@ runTests({
     testName      : 'is.bool',
     fn            : is.bool,
     passingInputs : [true, false],
-    failingInputs : [null, undefined, [], 0, '', function () {}, {}]
+    failingInputs : [null, undefined, [], 0, '', function () {}, {}, new Boolean(true), new Boolean(false)]
 });
 
 runTests({
@@ -56,7 +56,7 @@ runTests({
 runTests({
     testName      : 'is.fn',
     fn            : is.fn,
-    passingInputs : [function () {}],
+    passingInputs : [function () {}, new Function()],
     failingInputs : [null, undefined, [], 0, true, false, '', {}]
 });
 
@@ -64,7 +64,7 @@ runTests({
     testName      : 'is.integer',
     fn            : is.integer,
     passingInputs : [-1, 0, 1],
-    failingInputs : [[], [1], [1, 2, 3], null, undefined, 0.2, NaN, Infinity, -Infinity, true, '', function () {}, {}]
+    failingInputs : [[], [1], [1, 2, 3], null, undefined, 0.2, NaN, Infinity, -Infinity, true, '', function () {}, {}, new Number(5)]
 });
 
 runTests({
@@ -78,7 +78,7 @@ runTests({
     testName      : 'is.number',
     fn            : is.number,
     passingInputs : [0, Infinity, Number.MAX_VALUE, NaN],
-    failingInputs : [null, undefined, [], true, false, '5', function () {}, {}]
+    failingInputs : [null, undefined, [], true, false, '5', function () {}, {}, new Number(5)]
 });
 
 runTests({
@@ -92,14 +92,14 @@ runTests({
     testName      : 'is.realNumber',
     fn            : is.realNumber,
     passingInputs : [0, -5, 0.2],
-    failingInputs : [NaN, Infinity, -Infinity, [], [1, 2, 3], null, undefined, true, false, '', function () {}, {}]
+    failingInputs : [NaN, Infinity, -Infinity, [], [1, 2, 3], null, undefined, true, false, '', function () {}, {}, new Number(5)]
 });
 
 runTests({
     testName      : 'is.string',
     fn            : is.string,
     passingInputs : ['', 'hello'],
-    failingInputs : [null, undefined, [], ['a'], 0, true, false, function () {}]
+    failingInputs : [null, undefined, [], ['a'], 0, true, false, function () {}, new String('foo')]
 });
 
 runTests({
