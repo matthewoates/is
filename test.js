@@ -9,21 +9,17 @@ function runTests(data) {
         i;
 
     describe(testName, function () {
-        if (passingInputs.length > 0) {
-            it('testing passing cases', function () {
-                for (i = 0; i < passingInputs.length; i++) {
-                    assert.equal(fn(passingInputs[i]), true);
-                }
-            });
-        }
+        it('testing passing cases', function () {
+            for (i = 0; i < passingInputs.length; i++) {
+                assert.equal(fn(passingInputs[i]), true);
+            }
+        });
 
-        if (failingInputs.length > 0) {
-            it('testing failing cases', function () {
-                for (i = 0; i < passingInputs.length; i++) {
-                    assert.equal(fn(failingInputs[i]), false);
-                }
-            });
-        }
+        it('testing failing cases', function () {
+            for (i = 0; i < passingInputs.length; i++) {
+                assert.equal(fn(failingInputs[i]), false);
+            }
+        });
     });
 }
 
@@ -111,13 +107,6 @@ runTests({
     fn            : is.undefined,
     passingInputs : [undefined],
     failingInputs : [NaN, Infinity, -Infinity, [], [1, 2, 3], null, true, false, '', function () {}, {}]
-});
-
-runTests({
-    testName      : 'is.any',
-    fn            : is.any,
-    passingInputs : [1, Infinity, NaN, false, '', function () {}, {}, []],
-    failingInputs : []
 });
 
 function Foo() {}

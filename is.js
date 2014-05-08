@@ -62,10 +62,6 @@
         return (typeof o === 'undefined');
     };
 
-    is.any = function (o) {
-        return true;
-    };
-
     is.instanceOf = function (constructor) {
         return function (o) {
             return is.fn(constructor) && (o instanceof constructor);
