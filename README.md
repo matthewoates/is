@@ -1,4 +1,4 @@
-# IS (simple-is)
+# IS (is-simple)
 *Quick, easy, and lightweight type checking*
 
 # Why?
@@ -8,7 +8,7 @@ Type checking should be simple. This library does that, in as simple of a way th
 # Installation
 
 ### Node.js
-`npm install simple-is`
+`npm install is-simple
 
 ### In the browser
 `<script src="is.js"/>`
