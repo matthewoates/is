@@ -67,17 +67,17 @@ console.log(is.arrayOf(is.even)([2, 4, 6, 8])); // true
 # Special Types
 *NOTE: we treat `""` as defined*
 
-| matches                                 | is.any | is.defined | is.realNumber | is.integer |
-|-----------------------------------------|--------|------------|---------------|------------|
-| null, undefined                         | yes    | no         | no            | no         |
-| NaN, Infinity                           | yes    | no         | no            | no         |
-| 0, 2, -5                                | yes    | yes        | yes           | yes        |
-| 0.5, Math.PI                            | yes    | yes        | yes           | no         |
-| true, false                             | yes    | yes        | no            | no         |
-| "", "hello"                             | yes    | yes        | no            | no         |
-| [], [1, 2, 3]                           | yes    | yes        | no            | no         |
-| {}                                      | yes    | yes        | no            | no         |
-| function () {}, console, window, Object | yes    | yes        | no            | no         |
+| matches                                 | is.defined | is.realNumber | is.integer |
+|-----------------------------------------|------------|---------------|------------|
+| null, undefined                         | no         | no            | no         |
+| NaN, Infinity                           | no         | no            | no         |
+| 0, 2, -5                                | yes        | yes           | yes        |
+| 0.5, Math.PI                            | yes        | yes           | no         |
+| true, false                             | yes        | no            | no         |
+| "", "hello"                             | yes        | no            | no         |
+| [], [1, 2, 3]                           | yes        | no            | no         |
+| {}                                      | yes        | no            | no         |
+| function () {}, console, window, Object | yes        | no            | no         |
 
 # Testing
 ```
