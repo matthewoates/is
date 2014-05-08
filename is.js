@@ -36,7 +36,7 @@
     }
 
     is.nan = function (n) {
-        return is.number(n) && isNaN(n);
+       return n !== n;
     };
 
     is.number = function (n) {
