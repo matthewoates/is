@@ -31,7 +31,7 @@ var point = new Point(2, 4);
 var fakePoint = {x: 2, y: 4};
 
 console.log(is.instanceOf(Point)(p)); // true
-console.log(is.instanceOf(Point((fakePoint)); // false
+console.log(is.instanceOf(Point)(fakePoint)); // false
 
 // even more complex type checking
 console.log(is.arrayOf(is.number)([1, 2, 3])); // true
