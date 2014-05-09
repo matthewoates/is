@@ -7,7 +7,7 @@
         return function (a) {
             var ok = is.array(a);
 
-            if (is.defined(a) && is.number(a.length)) {
+            if (is.defined(a)) {
                 for (var i = 0; i < a.length && ok; i++) {
                     ok = t(a[i]);
                 }

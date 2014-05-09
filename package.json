@@ -1,6 +1,6 @@
 {
   "name": "is-simple",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Matthew Oates",
   "description": "Simple type checking for JavaScript in the browser and node.js",
   "repository": {
