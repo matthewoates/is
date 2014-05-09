@@ -8,7 +8,7 @@ Type checking should be simple. This library does that, in as simple of a way th
 # Installation
 
 ### Node.js
-`npm install is-simple
+`npm install is-simple`
 
 ### In the browser
 `<script src="is.js"/>`
