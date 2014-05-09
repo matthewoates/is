@@ -84,7 +84,7 @@ runTests({
 runTests({
     testName      : 'is.object',
     fn            : is.object,
-    passingInputs : [{}, [], function () {}],
+    passingInputs : [{}, [], function () {}, new Number(5)],
     failingInputs : [null, undefined, 0, true, false, '']
 });
 

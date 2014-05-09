@@ -46,7 +46,7 @@
     };
 
     is.object = function (o) {
-        return new Object(o) === o;
+        return !!o && o instanceof Object;
     };
 
     is.realNumber = function (n) {
