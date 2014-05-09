@@ -40,8 +40,8 @@ runTests({
 });
 
 runTests({
-    testName      : 'is.bool',
-    fn            : is.bool,
+    testName      : 'is.boolean',
+    fn            : is.boolean,
     passingInputs : [true, false],
     failingInputs : [null, undefined, [], 0, '', function () {}, {}, new Boolean(true), new Boolean(false)]
 });
@@ -54,8 +54,8 @@ runTests({
 });
 
 runTests({
-    testName      : 'is.fn',
-    fn            : is.fn,
+    testName      : 'is.function',
+    fn            : is.function,
     passingInputs : [function () {}, new Function()],
     failingInputs : [null, undefined, [], 0, true, false, '', {}]
 });

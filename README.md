@@ -52,17 +52,17 @@ console.log(is.arrayOf(is.even)([2, 4, 6, 8])); // true
 # Matching Basic JavaScript Types
 *NOTE: `typeof null === "object"`, but `IS` considers null to not be an object*
 
-| matches                                 | is.array | is.number | is.bool | is.string | is.fn | is.object |
-|-----------------------------------------|----------|-----------|---------|-----------|-------|-----------|
-| null, undefined                         | no       | no        | no      | no        | no    | no        |
-| NaN, Infinity                           | no       | yes       | no      | no        | no    | no        |
-| 0, 2, -5                                | no       | yes       | no      | no        | no    | no        |
-| 0.5, Math.PI                            | no       | yes       | no      | no        | no    | no        |
-| true, false                             | no       | no        | yes     | no        | no    | no        |
-| "", "hello"                             | no       | no        | no      | yes       | no    | no        |
-| [], [1, 2, 3]                           | yes      | no        | no      | no        | no    | yes       |
-| {}                                      | no       | no        | no      | no        | no    | yes       |
-| function () {}, console, window, Object | no       | no        | no      | no        | yes   | yes       |
+| matches                                 | is.array | is.number | is.boolean | is.string | is.function | is.object |
+|-----------------------------------------|----------|-----------|------------|-----------|-------------|-----------|
+| null, undefined                         | no       | no        | no         | no        | no          | no        |
+| NaN, Infinity                           | no       | yes       | no         | no        | no          | no        |
+| 0, 2, -5                                | no       | yes       | no         | no        | no          | no        |
+| 0.5, Math.PI                            | no       | yes       | no         | no        | no          | no        |
+| true, false                             | no       | no        | yes        | no        | no          | no        |
+| "", "hello"                             | no       | no        | no         | yes       | no          | no        |
+| [], [1, 2, 3]                           | yes      | no        | no         | no        | no          | yes       |
+| {}                                      | no       | no        | no         | no        | no          | yes       |
+| function () {}, console, window, Object | no       | no        | no         | no        | yes         | yes       |
 
 # Special Types
 *NOTE: we treat `""` as defined*
@@ -78,6 +78,10 @@ console.log(is.arrayOf(is.even)([2, 4, 6, 8])); // true
 | [], [1, 2, 3]                           | yes        | no            | no         |
 | {}                                      | yes        | no            | no         |
 | function () {}, console, window, Object | yes        | no            | no         |
+
+# Specific Checks
+`is.nan` is only true if passed in `NaN`.
+`is.undefined` is only true if passed in `undefined`.
 
 # Testing
 ```

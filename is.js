@@ -15,7 +15,7 @@
         };
     };
 
-    is.bool = function (b) {
+    is.boolean = function (b) {
         return !!b === b;
     };
 
@@ -27,7 +27,7 @@
             !is.nan(x);
     }
 
-    is.fn = function (f) {
+    is.function = function (f) {
         return Object.prototype.toString.call(f) === '[object Function]';
     };
 
@@ -64,7 +64,7 @@
 
     is.instanceOf = function (constructor) {
         return function (o) {
-            return is.fn(constructor) && (o instanceof constructor);
+            return is.function(constructor) && (o instanceof constructor);
         };
     };
 
