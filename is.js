@@ -7,8 +7,10 @@
         return function (a) {
             var ok = is.array(a);
 
-            for (var i = 0; i < a.length && ok; i++) {
-                ok = t(a[i]);
+            if (is.defined(a) && is.number(a.length)) {
+                for (var i = 0; i < a.length && ok; i++) {
+                    ok = t(a[i]);
+                }
             }
 
             return !!ok;
@@ -40,7 +42,7 @@
     };
 
     is.number = function (n) {
-        return Object.prototype.toString.call(n) === '[object Number]';
+        return !is.object(n) && Object.prototype.toString.call(n) === '[object Number]';
     };
 
     is.object = function (o) {
@@ -55,7 +57,7 @@
     };
 
     is.string = function (s) {
-        return Object.prototype.toString.call(s) === '[object String]';
+        return !is.object(s) && Object.prototype.toString.call(s) === '[object String]';
     };
 
     is.undefined = function (o) {

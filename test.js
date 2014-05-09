@@ -16,7 +16,7 @@ function runTests(data) {
         });
 
         it('testing failing cases', function () {
-            for (i = 0; i < passingInputs.length; i++) {
+            for (i = 0; i < failingInputs.length; i++) {
                 assert.equal(fn(failingInputs[i]), false);
             }
         });
