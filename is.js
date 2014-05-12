@@ -1,11 +1,4 @@
 (function (is) {
-    is.array = function (val) {
-        return Object.prototype.toString.call(val) === '[object Array]';
-    };
-
-    is.function = function (val) {
-        return Object.prototype.toString.call(val) === '[object Function]';
-    };
 
     is.number = function (val) {
         return !is.object(val) && Object.prototype.toString.call(val) === '[object Number]';
@@ -13,6 +6,14 @@
 
     is.string = function (val) {
         return !is.object(val) && Object.prototype.toString.call(val) === '[object String]';
+    };
+
+    is.function = function (val) {
+        return val instanceof Function;
+    };
+
+    is.array = function (val) {
+        return val instanceof Array;
     };
 
     is.arrayOf = function (typeFn) {
