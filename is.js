@@ -29,6 +29,13 @@
             !is.nan(x);
     }
 
+    is.realNumber = function (n) {
+        return is.number(n) &&
+            n !== Infinity &&
+            n !== -Infinity &&
+            !is.nan(n);
+    };
+
     is.function = function (f) {
         return Object.prototype.toString.call(f) === '[object Function]';
     };
@@ -47,13 +54,6 @@
 
     is.object = function (o) {
         return !!o && o instanceof Object;
-    };
-
-    is.realNumber = function (n) {
-        return is.number(n) &&
-            n !== Infinity &&
-            n !== -Infinity &&
-            !is.nan(n);
     };
 
     is.string = function (s) {
