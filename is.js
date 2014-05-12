@@ -5,7 +5,7 @@
     };
 
     is.string = function (val) {
-        return !is.object(val) && Object.prototype.toString.call(val) === '[object String]';
+        return typeof val === 'string';
     };
 
     is.function = function (val) {
