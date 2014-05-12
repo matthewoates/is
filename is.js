@@ -1,4 +1,8 @@
 (function (is) {
+    is.object = function (val) {
+        return val instanceof Object;
+    };
+
     is.function = function (val) {
         return val instanceof Function;
     };
@@ -7,17 +11,35 @@
         return val instanceof Array;
     };
 
+    is.instanceOf = function (constructor) {
+        return function (val) {
+            return is.function(constructor) && (val instanceof constructor);
+        };
+    };
+
     is.number = function (val) {
         return Number(val) === val || is.nan(val);
+    };
+
+    is.undefined = function (val) {
+        return (typeof val === 'undefined');
     };
 
     is.string = function (val) {
         return typeof val === 'string';
     };
 
-    is.object = function (val) {
-        return val instanceof Object;
+    is.nan = function (val) {
+       return val !== val;
     };
+
+    is.boolean = function (val) {
+        return !!val === val;
+    };
+
+    is.integer = function (val) {
+        return is.number(val) && val % 1 === 0;
+    }
 
     is.arrayOf = function (typeFn) {
         return function (val) {
@@ -33,13 +55,6 @@
         };
     };
 
-    is.nan = function (val) {
-       return val !== val;
-    };
-
-    is.boolean = function (val) {
-        return !!val === val;
-    };
 
     is.defined = function (val) {
         return val !== null &&
@@ -56,19 +71,6 @@
             !is.nan(val);
     };
 
-    is.integer = function (val) {
-        return is.number(val) && val % 1 === 0;
-    }
-
-    is.undefined = function (val) {
-        return (typeof val === 'undefined');
-    };
-
-    is.instanceOf = function (constructor) {
-        return function (val) {
-            return is.function(constructor) && (val instanceof constructor);
-        };
-    };
 
 // this cryptic expression is fairly common with npm modules
 // it exports the library via exports for node.js,
