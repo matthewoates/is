@@ -1,27 +1,27 @@
 (function (is) {
-    is.array = function (a) {
-        return Object.prototype.toString.call(a) === '[object Array]';
+    is.array = function (val) {
+        return Object.prototype.toString.call(val) === '[object Array]';
     };
 
-    is.function = function (f) {
-        return Object.prototype.toString.call(f) === '[object Function]';
+    is.function = function (val) {
+        return Object.prototype.toString.call(val) === '[object Function]';
     };
 
-    is.number = function (n) {
-        return !is.object(n) && Object.prototype.toString.call(n) === '[object Number]';
+    is.number = function (val) {
+        return !is.object(val) && Object.prototype.toString.call(val) === '[object Number]';
     };
 
-    is.string = function (s) {
-        return !is.object(s) && Object.prototype.toString.call(s) === '[object String]';
+    is.string = function (val) {
+        return !is.object(val) && Object.prototype.toString.call(val) === '[object String]';
     };
 
-    is.arrayOf = function (t) {
-        return function (a) {
-            var ok = is.array(a);
+    is.arrayOf = function (typeFn) {
+        return function (val) {
+            var ok = is.array(val);
 
-            if (is.defined(a)) {
-                for (var i = 0; i < a.length && ok; i++) {
-                    ok = t(a[i]);
+            if (is.defined(val)) {
+                for (var i = 0; i < val.length && ok; i++) {
+                    ok = typeFn(val[i]);
                 }
             }
 
@@ -29,44 +29,44 @@
         };
     };
 
-    is.nan = function (n) {
-       return n !== n;
+    is.nan = function (val) {
+       return val !== val;
     };
 
-    is.boolean = function (b) {
-        return !!b === b;
+    is.boolean = function (val) {
+        return !!val === val;
     };
 
-    is.defined = function (x) {
-        return x !== null &&
-            !is.undefined(x) &&
-            x !== Infinity &&
-            x !== -Infinity &&
-            !is.nan(x);
+    is.defined = function (val) {
+        return val !== null &&
+            !is.undefined(val) &&
+            val !== Infinity &&
+            val !== -Infinity &&
+            !is.nan(val);
     }
 
-    is.realNumber = function (n) {
-        return is.number(n) &&
-            n !== Infinity &&
-            n !== -Infinity &&
-            !is.nan(n);
+    is.realNumber = function (val) {
+        return is.number(val) &&
+            val !== Infinity &&
+            val !== -Infinity &&
+            !is.nan(val);
     };
 
-    is.integer = function (x) {
-        return is.number(x) && x % 1 === 0;
+    is.integer = function (val) {
+        return is.number(val) && val % 1 === 0;
     }
 
-    is.object = function (o) {
-        return !!o && o instanceof Object;
+    is.object = function (val) {
+        return !!val && val instanceof Object;
     };
 
-    is.undefined = function (o) {
-        return (typeof o === 'undefined');
+    is.undefined = function (val) {
+        return (typeof val === 'undefined');
     };
 
     is.instanceOf = function (constructor) {
-        return function (o) {
-            return is.function(constructor) && (o instanceof constructor);
+        return function (val) {
+            return is.function(constructor) && (val instanceof constructor);
         };
     };
 
