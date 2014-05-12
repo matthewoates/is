@@ -15,6 +15,10 @@
         return typeof val === 'string';
     };
 
+    is.object = function (val) {
+        return val instanceof Object;
+    };
+
     is.arrayOf = function (typeFn) {
         return function (val) {
             var ok = is.array(val);
@@ -55,10 +59,6 @@
     is.integer = function (val) {
         return is.number(val) && val % 1 === 0;
     }
-
-    is.object = function (val) {
-        return val instanceof Object;
-    };
 
     is.undefined = function (val) {
         return (typeof val === 'undefined');
