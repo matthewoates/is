@@ -19,7 +19,7 @@
         return function (val) {
             var ok = is.array(val);
 
-            if (is.defined(val)) {
+            if (val) { // a truthy check will suffice, instead if is.defined(val)
                 for (var i = 0; i < val.length && ok; i++) {
                     ok = typeFn(val[i]);
                 }
