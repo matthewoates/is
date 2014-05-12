@@ -3,6 +3,18 @@
         return Object.prototype.toString.call(a) === '[object Array]';
     };
 
+    is.function = function (f) {
+        return Object.prototype.toString.call(f) === '[object Function]';
+    };
+
+    is.number = function (n) {
+        return !is.object(n) && Object.prototype.toString.call(n) === '[object Number]';
+    };
+
+    is.string = function (s) {
+        return !is.object(s) && Object.prototype.toString.call(s) === '[object String]';
+    };
+
     is.arrayOf = function (t) {
         return function (a) {
             var ok = is.array(a);
@@ -36,10 +48,6 @@
             !is.nan(n);
     };
 
-    is.function = function (f) {
-        return Object.prototype.toString.call(f) === '[object Function]';
-    };
-
     is.integer = function (x) {
         return is.number(x) && x % 1 === 0;
     }
@@ -48,16 +56,8 @@
        return n !== n;
     };
 
-    is.number = function (n) {
-        return !is.object(n) && Object.prototype.toString.call(n) === '[object Number]';
-    };
-
     is.object = function (o) {
         return !!o && o instanceof Object;
-    };
-
-    is.string = function (s) {
-        return !is.object(s) && Object.prototype.toString.call(s) === '[object String]';
     };
 
     is.undefined = function (o) {
