@@ -58,7 +58,7 @@
     }
 
     is.object = function (val) {
-        return !!val && val instanceof Object;
+        return val instanceof Object;
     };
 
     is.undefined = function (val) {
