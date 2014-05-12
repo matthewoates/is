@@ -1,4 +1,11 @@
 (function (is) {
+    is.function = function (val) {
+        return val instanceof Function;
+    };
+
+    is.array = function (val) {
+        return val instanceof Array;
+    };
 
     is.number = function (val) {
         return Number(val) === val || is.nan(val);
@@ -6,14 +13,6 @@
 
     is.string = function (val) {
         return typeof val === 'string';
-    };
-
-    is.function = function (val) {
-        return val instanceof Function;
-    };
-
-    is.array = function (val) {
-        return val instanceof Array;
     };
 
     is.arrayOf = function (typeFn) {
