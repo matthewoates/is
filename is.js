@@ -29,6 +29,10 @@
         };
     };
 
+    is.nan = function (n) {
+       return n !== n;
+    };
+
     is.boolean = function (b) {
         return !!b === b;
     };
@@ -51,10 +55,6 @@
     is.integer = function (x) {
         return is.number(x) && x % 1 === 0;
     }
-
-    is.nan = function (n) {
-       return n !== n;
-    };
 
     is.object = function (o) {
         return !!o && o instanceof Object;
