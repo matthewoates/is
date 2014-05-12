@@ -1,7 +1,7 @@
 (function (is) {
 
     is.number = function (val) {
-        return !is.object(val) && Object.prototype.toString.call(val) === '[object Number]';
+        return Number(val) === val || is.nan(val);
     };
 
     is.string = function (val) {
