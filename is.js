@@ -45,10 +45,8 @@
         return function (val) {
             var ok = is.array(val);
 
-            if (val) { // a truthy check will suffice, instead if is.defined(val)
-                for (var i = 0; i < val.length && ok; i++) {
-                    ok = typeFn(val[i]);
-                }
+            for (var i = 0; ok && i < val.length; i++) {
+                ok = typeFn(val[i]);
             }
 
             return !!ok;
