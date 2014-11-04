@@ -1,5 +1,13 @@
-var assert = require('assert'),
+var assert,
+    is;
+
+if (typeof require !== 'undefined') {
+    assert = require('assert');
     is = require('./is');
+} else {
+    assert = console.assert;
+    is = window.is;
+}
 
 function runTests(data) {
     var testName = data.testName,
