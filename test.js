@@ -1,11 +1,8 @@
-var assert,
-    is;
+var is;
 
 if (typeof require !== 'undefined') {
-    assert = require('assert');
     is = require('./is');
 } else {
-    assert = console.assert;
     is = window.is;
 }
 
@@ -19,13 +16,13 @@ function runTests(data) {
     describe(testName, function () {
         it('testing passing cases', function () {
             for (i = 0; i < passingInputs.length; i++) {
-                assert.equal(fn(passingInputs[i]), true);
+                chai.assert.strictEqual(fn(passingInputs[i]), true);
             }
         });
 
         it('testing failing cases', function () {
             for (i = 0; i < failingInputs.length; i++) {
-                assert.equal(fn(failingInputs[i]), false);
+                chai.assert.strictEqual(fn(failingInputs[i]), false);
             }
         });
     });
