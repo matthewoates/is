@@ -1,9 +1,7 @@
-var is;
-
 if (typeof require !== 'undefined') {
-    is = require('./is');
-} else {
-    is = window.is;
+    // node.js
+    global.expect = require('expect.js');
+    global.is = require('./is');
 }
 
 function runTests(data) {
@@ -59,8 +57,8 @@ runTests({
 });
 
 runTests({
-    testName      : 'is.function',
-    fn            : is.function,
+    testName      : 'is.fn',
+    fn            : is.fn,
     passingInputs : [function () {}, new Function()],
     failingInputs : [null, undefined, [], 0, true, false, '', {}]
 });

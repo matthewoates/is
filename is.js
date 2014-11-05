@@ -3,7 +3,7 @@
         return val instanceof Object;
     };
 
-    is.function = function (val) {
+    is.fn = function (val) {
         return val instanceof Function;
     };
 
@@ -13,7 +13,7 @@
 
     is.instanceOf = function (constructor) {
         return function (val) {
-            return is.function(constructor) && (val instanceof constructor);
+            return is.fn(constructor) && (val instanceof constructor);
         };
     };
 
