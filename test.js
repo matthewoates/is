@@ -16,13 +16,13 @@ function runTests(data) {
     describe(testName, function () {
         it('testing passing cases', function () {
             for (i = 0; i < passingInputs.length; i++) {
-                chai.assert.strictEqual(fn(passingInputs[i]), true);
+                expect(fn(passingInputs[i])).to.be(true);
             }
         });
 
         it('testing failing cases', function () {
             for (i = 0; i < failingInputs.length; i++) {
-                chai.assert.strictEqual(fn(failingInputs[i]), false);
+                expect(fn(failingInputs[i])).to.be(false);
             }
         });
     });
