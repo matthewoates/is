@@ -21,7 +21,7 @@
     "mocha": "2.0.1"
   },
   "scripts": {
-    "test": "mocha -R list -r is"
+    "test": "mocha -R list -r is --reporter spec"
   },
   "license": "MIT",
   "engines": {
