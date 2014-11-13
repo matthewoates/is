@@ -1,4 +1,14 @@
 (function (is) {
+    is.optional = function (type) {
+        return function (val) {
+            return is.undefined(type) || type(val);
+        };
+    };
+
+    is.any = function (val) {
+        return true;
+    };
+
     is.object = function (val) {
         return val instanceof Object;
     };
