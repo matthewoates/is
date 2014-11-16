@@ -1,7 +1,7 @@
 (function (is) {
     is.optional = function (type) {
         return function (val) {
-            return is.undefined(type) || type(val);
+            return is.undefined(val) || type(val);
         };
     };
 
