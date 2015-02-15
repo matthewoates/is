@@ -63,7 +63,6 @@
         };
     };
 
-
     is.defined = function (val) {
         return val !== null &&
             !is.undefined(val) &&
@@ -79,6 +78,36 @@
             !is.nan(val);
     };
 
+    is.matchingSchema = function (schema) {
+        // we can assume schema is a function or object
+        return function (data) {
+            // if schema is an object, data must be an object
+            var result = (is.object(schema) && is.object(data)) || is.fn(schema);
+
+            for (var key in schema) {
+                if (!result) break;
+
+                if (schema.hasOwnProperty(key)) {
+                    if (is.fn(schema[key])) {
+                        result = schema[key](data[key]);
+                    } else if (is.object(schema[key])) {
+                        result = is.matchingSchema(schema[key])(data[key]);
+                    } else {
+                        result = false;
+                    }
+                }
+            }
+
+            // make sure that data doesn't have any extra keys
+            for (var key in data) {
+                if (data.hasOwnProperty(key) && !schema.hasOwnProperty(key)) {
+                    result = false;
+                }
+            }
+
+            return result;
+        };
+    };
 
 // this cryptic expression is fairly common with npm modules
 // it exports the library via exports for node.js,

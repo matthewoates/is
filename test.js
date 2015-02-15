@@ -121,3 +121,23 @@ runTests({
     failingInputs : [{}, [], null, undefined, NaN, Infinity]
 });
 
+runTests({
+    testName      : 'is.matchingSchema({})',
+    fn            : is.matchingSchema({}),
+    passingInputs : [{}],
+    failingInputs : [null, undefined, 0, '', NaN, Infinity, -Infinity]
+});
+
+runTests({
+  testName      : 'is.matchingSchema({x: is.integer, y: is.integer})',
+    fn            : is.matchingSchema({x: is.integer, y: is.integer, z: is.optional(is.integer)}),
+    passingInputs : [{x: 1, y: 1}, {x: -1, y: 5, z: 1234}],
+    failingInputs : [{}, null, undefined, {x: 0.1, y: 1}, {x: 0, y: 0, z: 0.1}]
+});
+
+runTests({
+  testName      : 'is.matchingSchema({foo: {bar: {baz: is.boolean}}})',
+    fn            : is.matchingSchema({foo: {bar: {baz: is.boolean}}}),
+    passingInputs : [{foo: {bar: {baz: true}}}],
+    failingInputs : [{foo: {bar: {baz: 0}}}, {}, {foo: {}}, {foo: {bar: {}}}, {foo: {bar: {baz: true, bip: false}}}]
+});
